@@ -5,18 +5,25 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text('You answered X out of Y questions correctly!'),
-        const SizedBox(height: 30),
-        const Text('List of answers and questions'),
-        const SizedBox(height: 30),
-        OutlinedButton(
-          onPressed: () {},
-          child: const Text('Restart Quiz!'),
-        ),
-      ],
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text('You answered X out of Y questions correctly!'),
+          const SizedBox(height: 30),
+          const Text('List of answers and questions'),
+          const SizedBox(height: 30),
+          OutlinedButton.icon(
+            style: OutlinedButton.styleFrom(
+              foregroundColor: Colors.white,
+            ),
+            icon: const Icon(Icons.restart_alt),
+            onPressed: () {},
+            label: const Text('Restart Quiz!'),
+          ),
+        ],
+      ),
     );
   }
 }

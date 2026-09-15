@@ -26,7 +26,7 @@ class _QuizState extends State<Quiz> {
     if (selectedAnswers.length == questions.length) {
       setState(() {
         selectedAnswers = [];
-        activeScreen = 'start-screen'; 
+        activeScreen = 'results-screen'; 
       });
     }
   }
@@ -38,6 +38,10 @@ class _QuizState extends State<Quiz> {
 
     if (activeScreen == 'questions-screen'){
       screenWidget = QuestionsScreen(onSelectAnswer: chooseAnswer);
+    }
+
+    if (activeScreen == 'results-screen'){
+      screenWidget = const ResultsScreen();
     }
 
     // final screenWidget = activeScreen == 'start-screen'
@@ -58,6 +62,23 @@ class _QuizState extends State<Quiz> {
             ),
           ),
           child: screenWidget,
+        ),
+      ),
+    );
+  }
+}
+
+class ResultsScreen extends StatelessWidget {
+  const ResultsScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text(
+        'Quiz complete!',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 24,
         ),
       ),
     );
