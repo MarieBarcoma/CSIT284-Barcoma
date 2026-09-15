@@ -11,28 +11,21 @@ class QuestionsScreen extends StatefulWidget {
 class _QuestionsScreenState extends State<QuestionsScreen> {
   @override
   Widget build(BuildContext context) {
+    final currentQuestion = questions[0];
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text('Questions Screen'),
           const SizedBox(height: 30),
-          AnswerButton(
-            text: 'Answer 1', 
-            onTap: () {}
-          ),
-          AnswerButton(
-            text: 'Answer 2', 
-            onTap: () {}
-          ),
-          AnswerButton(
-            text: 'Answer 3', 
-            onTap: () {}
-          ),
-          AnswerButton(
-            text: 'Answer 4', 
-            onTap: () {}
-          ),
+          ...currentQuestion.answers.map((answer) {
+            return AnswerButton(
+              text: answer,
+              onTap: () {
+                print('Answer chosen: $answer');
+              },
+            );
+          })
         ],
       ),
     );
