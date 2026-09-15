@@ -24,9 +24,8 @@ class _QuizState extends State<Quiz> {
     final screenWidget = activeScreen == 'start-screen'
         ? StartScreen(switchScreen)
         : const QuestionsScreen();
-        
+
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Container(
           decoration: const BoxDecoration(
