@@ -33,8 +33,9 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               textAlign: TextAlign.center,
               currentQuestion.text,
               style: const TextStyle(
-                fontSize: 18,
-                color: Colors.white, 
+                fontSize: 24,
+                color: Colors.white,
+                fontWeight: FontWeight.bold, 
               ),
             ),
             const SizedBox(height: 30),
