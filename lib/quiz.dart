@@ -41,7 +41,9 @@ class _QuizState extends State<Quiz> {
     }
 
     if (activeScreen == 'results-screen'){
-      screenWidget = const ResultsScreen();
+      screenWidget = ResultsScreen(
+        chosenAnswers: selectedAnswers,
+      );
     }
 
     // final screenWidget = activeScreen == 'start-screen'
@@ -69,7 +71,12 @@ class _QuizState extends State<Quiz> {
 }
 
 class ResultsScreen extends StatelessWidget {
-  const ResultsScreen({super.key});
+  const ResultsScreen({
+    super.key,
+    required this.chosenAnswers,
+  });
+
+  final List<String> chosenAnswers;
 
   @override
   Widget build(BuildContext context) {
