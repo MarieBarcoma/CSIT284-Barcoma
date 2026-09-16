@@ -14,14 +14,34 @@ class QuestionsSummary extends StatelessWidget {
             return Row(
               children: [
                 Text(((data['question_index'] as int) + 1).toString()),
+                const SizedBox(width: 20),
                 Expanded(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(data['question'] as String),
+                      Text(data['question'] as String,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       const SizedBox(height: 5),
-                      Text(data['user_answer'] as String),
+                      Text(
+                        data['user_answer'] as String, 
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.pinkAccent,
+                        ),
+                      ),
                       const SizedBox(height: 5),
-                      Text(data['correct_answer'] as String),
+                      Text(
+                        data['correct_answer'] as String,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.greenAccent,
+                        ),
+                      ),
                     ],
                   ),
                 )
