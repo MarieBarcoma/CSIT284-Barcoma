@@ -53,10 +53,6 @@ class _QuizState extends State<Quiz> {
       );
     }
 
-    // final screenWidget = activeScreen == 'start-screen'
-    //    ? StartScreen(switchScreen)
-    //    : const QuestionsScreen();
-
     return MaterialApp(
       home: Scaffold(
         body: Container(
