@@ -3,8 +3,13 @@ import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/components/questions_summary.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({super.key, required this.chosenAnswers});
+  const ResultScreen({
+    super.key, 
+    required this.chosenAnswers,
+    required this.onRestart,
+  });
 
+  final void Function() onRestart;
   final List<String> chosenAnswers;
 
   List<Map<String, Object>> get getSummaryData {
@@ -24,6 +29,12 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final numTotalQuestions = questions.length;
+    final numCorrectQuestions = getSummaryData.where((data){
+      return data['user_answer'] == data['correct_answer'];
+    }).length;
+
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -31,7 +42,7 @@ class ResultScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('You answered X out of Y questions correctly!'),
+            Text('You answered $numCorrectQuestions out of $numTotalQuestions questions correctly!'),
             const SizedBox(height: 30),
             QuestionsSummary(getSummaryData),
             const SizedBox(height: 30),
@@ -40,7 +51,7 @@ class ResultScreen extends StatelessWidget {
                 foregroundColor: Colors.white,
               ),
               icon: const Icon(Icons.restart_alt),
-              onPressed: () {},
+              onPressed: onRestart,
               label: const Text('Restart Quiz!'),
             ),
           ],
