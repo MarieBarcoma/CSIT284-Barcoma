@@ -13,7 +13,13 @@ class QuestionsSummary extends StatelessWidget {
           children: summaryData.map((data) {
             return Row(
               children: [
-                Text(((data['question_index'] as int) + 1).toString()),
+                Text(((data['question_index'] as int) + 1).toString(),
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 const SizedBox(width: 20),
                 Expanded(
                   child: Column(
