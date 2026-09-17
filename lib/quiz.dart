@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/screens/questions_screen.dart';
+import 'package:quiz_app/screens/result_screen.dart'; // Correct import added
 import 'package:quiz_app/screens/start_screen.dart';
 
 class Quiz extends StatefulWidget {
@@ -20,12 +21,12 @@ class _QuizState extends State<Quiz> {
     });
   }
 
-  void chooseAnswer(String answer){
+  void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
 
     if (selectedAnswers.length == questions.length) {
       setState(() {
-        activeScreen = 'results-screen'; 
+        activeScreen = 'results-screen';
       });
     }
   }
@@ -33,21 +34,20 @@ class _QuizState extends State<Quiz> {
   void restartQuiz() {
     setState(() {
       selectedAnswers = [];
-      activeScreen = 'question-screen';
+      activeScreen = 'questions-screen';
     });
   }
 
   @override
   Widget build(BuildContext context) {
-
     Widget screenWidget = StartScreen(switchScreen);
 
-    if (activeScreen == 'questions-screen'){
+    if (activeScreen == 'questions-screen') {
       screenWidget = QuestionsScreen(onSelectAnswer: chooseAnswer);
     }
 
-    if (activeScreen == 'results-screen'){
-      screenWidget = ResultsScreen(
+    if (activeScreen == 'results-screen') {
+      screenWidget = ResultScreen(
         chosenAnswers: selectedAnswers,
         onRestart: restartQuiz,
       );
@@ -56,8 +56,10 @@ class _QuizState extends State<Quiz> {
     return MaterialApp(
       home: Scaffold(
         body: Container(
+          width: double.infinity,
+          height: double.infinity,
           decoration: const BoxDecoration(
-            gradient: LinearGradient (
+            gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
@@ -67,30 +69,6 @@ class _QuizState extends State<Quiz> {
             ),
           ),
           child: screenWidget,
-        ),
-      ),
-    );
-  }
-}
-
-class ResultsScreen extends StatelessWidget {
-  const ResultsScreen({
-    super.key,
-    required this.chosenAnswers,
-    required this.onRestart,
-  });
-
-  final List<String> chosenAnswers;
-  final void Function() onRestart;
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Quiz complete!',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 24,
         ),
       ),
     );
