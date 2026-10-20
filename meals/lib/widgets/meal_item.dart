@@ -5,23 +5,18 @@ import 'package:meals/widgets/meal_item_trait.dart';
 import 'package:meals/models/meal.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem({
-    super.key,
-    required this.meal,
-    required this.onSelectMeal,
+  const MealItem({super.key,required this.meal,required this.onSelectMeal,
   });
 
   final Meal meal;
   final void Function(Meal meal) onSelectMeal;
 
   String get complexityText {
-    return meal.complexity.name[0].toUpperCase() +
-        meal.complexity.name.substring(1);
+    return meal.complexity.name[0].toUpperCase() + meal.complexity.name.substring(1);
   }
 
   String get affordabilityText {
-    return meal.affordability.name[0].toUpperCase() +
-        meal.affordability.name.substring(1);
+    return meal.affordability.name[0].toUpperCase() + meal.affordability.name.substring(1);
   }
 
   @override
@@ -53,7 +48,7 @@ class MealItem extends StatelessWidget {
               child: Container(
                 color: Colors.black54,
                 padding:
-                    const EdgeInsets.symmetric(vertical: 6, horizontal: 44),
+                const EdgeInsets.symmetric(vertical: 6, horizontal: 44),
                 child: Column(
                   children: [
                     Text(
@@ -61,7 +56,7 @@ class MealItem extends StatelessWidget {
                       maxLines: 2,
                       textAlign: TextAlign.center,
                       softWrap: true,
-                      overflow: TextOverflow.ellipsis, // Very long text ...
+                      overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
